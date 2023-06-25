@@ -1,0 +1,26 @@
+1.
+SELECT p.title
+FROM products p
+JOIN orders o ON p.id = o.productid
+GROUP BY p.title
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+2.
+SELECT p.title
+FROM products p
+JOIN orders o ON p.id = o.productid
+GROUP BY p.title
+ORDER BY SUM(o.product_count) DESC
+LIMIT 1;
+
+3.
+SELECT SUM(p.price * o.product_count) AS total_revenue
+FROM products p
+JOIN orders o ON p.id = o.productid;
+
+4.
+SELECT ordertype, SUM(p.price * o.product_count) AS total_revenue
+FROM products p
+JOIN orders o ON p.id = o.productid
+GROUP BY ordertype;
